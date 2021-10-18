@@ -18,12 +18,14 @@ router.get('/users', (req, res) => {
         TableName: table
     };
     // Scan return all items in the table
-    if (err) {
-        res.status(500).json(err); // an error occured
-    } else {
-        res.json(data.Items)
-    }
-})
+    dynamodb.scan(params, (err, data) => {
+        if (err) {
+            res.status(500).json(err); // an error occured
+        } else {
+            res.json(data.Items)
+        }
+    });
+});
 
 router.get('/users/:username', (req, res) => {
     console.log(`Querying for thought(s) from ${req.params.username}.`);
@@ -68,7 +70,7 @@ router.post("/users", (req, res) => {
             console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
         } else {
             console.log("Added item:", JSON.stringify(data, null, 2));
-            res.json({"Added": JSON.stringify(data, null, 2)});
+            res.json({ "Added": JSON.stringify(data, null, 2) });
         }
     });
 });
