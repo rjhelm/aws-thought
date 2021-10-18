@@ -2,25 +2,25 @@
   "name": "aws-thought",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "aws-sdk": "^2.1009.0",
-    "express": "^4.17.1",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {},
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rjhelm/aws-thought.git"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rjhelm/aws-thought/issues"
+  "dependencies": {
+    "aws-sdk": "^2.1009.0",
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "multer": "^1.4.3",
+    "uuid": "^8.3.2"
   },
-  "homepage": "https://github.com/rjhelm/aws-thought#readme"
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
 }

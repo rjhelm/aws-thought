@@ -2,7 +2,8 @@
     {
         "username": "A. Einstein",
         "createdAt": 1502293460904,
-        "thought": "It’s not that I’m so smart, it’s just that I stay with problems longer."
+        "thought": 
+            "It’s not that I’m so smart, it’s just that I stay with problems longer."
     },
     {
         "username": "Steph Curry",
@@ -33,5 +34,5 @@
         "username": "Ray Davis",
         "createdAt": 1602303867954,
         "thought": "A challenge only becomes an obstacle when you bow to it."
-    }
+   }
 ]

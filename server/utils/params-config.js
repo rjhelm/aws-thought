@@ -5,9 +5,10 @@ const params = fileName => {
     const fileType = myFile[myFile.length - 1];
 
     const imageParams = {
-        Bucket: '<My_Bucket_Name>',
+        Bucket: config.bucket,
         Key: `${uuidv4()}.${fileType}`,
-        Body: fileName.buffer
+        Body: fileName.buffer,
+        ACL: 'public-read'
     };
 
     return imageParams;
